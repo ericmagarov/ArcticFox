@@ -1,0 +1,38 @@
+<?php
+mysql_connect(HOST, USER, PWD);
+mysql_select_db(DB);
+
+$result = mysql_query('SELECT * FROM '.MYSQL_PREFIX.'_options WHERE type="title" LIMIT 1');
+$row = mysql_fetch_array($result);
+
+mysql_close();
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="<?php echo STYLE.'style.css'; ?>" />
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+
+<!-- START TINYMCE JAVASCRIPT CODE -->
+<script type="text/javascript" src="tiny/tiny_mce.js"></script>
+
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	language: "de",
+	theme : "advanced",
+	theme_advanced_buttons1_add_before : "separator,insertdate,inserttime,preview,zoom,separator,forecolor,backcolor",
+	theme_advanced_buttons2_add_before : "bullist,numlist,separator,outdent,indent,separator,undo,redo,separator,link,unlink,anchor,image,cleanup,help,code",
+	theme_advanced_buttons3_add_before : "hr,removeformat,visualaid,separator,sub,sup,separator,charmap",
+	theme_advanced_toolbar_location : "top",
+	skin : "o2k7"
+});
+</script>
+<!-- END TINYMCE JAVASCRIPT CODE -->
+
+<title>
+<?php echo $row['content']; ?>
+</title>
+</head>
+<body>
